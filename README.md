@@ -1,4 +1,4 @@
-#vagrant-dev-env
+# vagrant-dev-env
 
 Creates a standard development environment using Vagrant
 
