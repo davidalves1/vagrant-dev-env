@@ -2,8 +2,6 @@
 
 Creates a standard development environment using Vagrant
 
-
-
 ## Prerequisites
 
 - Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
@@ -12,7 +10,7 @@ Creates a standard development environment using Vagrant
 - Go to your directory
 
 ## Using Apache
-Just run `vagrant up` 
+Just run `$ vagrant up` 
 
 ## Using Nginx
-Open the `Vagrantfile` file, comment the command` config.vm.provision: shell, path: "bootstrap-apache.sh" `at line 53 and uncomment the` config.vm.provision: shell, path: "bootstrap- Nginx.sh "` at line 56, save and run `vagrant up` 
+Open the `Vagrantfile` file, comment the command `config.vm.provision: shell, path: "bootstrap-apache.sh" `at line 53 and uncomment the `config.vm.provision: shell, path: "bootstrap-nginx.sh "` at line 56, save and run `$ vagrant up`
