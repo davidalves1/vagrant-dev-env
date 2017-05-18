@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 3306,  host: 33006 # mysql
 
   # Create a private network, which allows host-only access to the machine
-  config.vm.network "private_network", ip: "192.168.30.100"
+  # config.vm.network "private_network", ip: "192.168.30.100"
 
   # Share an additional folder to the guest VM.
   # config.vm.synced_folder "your/local/folder", "vm/respective/folder"
