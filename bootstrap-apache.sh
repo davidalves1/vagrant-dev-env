@@ -58,21 +58,30 @@ sudo apt-get install -y php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-common ph
 
 echo '##### Install NVM and Node #####'
 # --------------------
-sudo apt-get update
-sudo apt-get -y install build-essential libssl-dev
-sudo apt-get -y install build-essential libssl-dev
+# sudo apt-get update
+# sudo apt-get -y install build-essential libssl-dev
+# sudo apt-get -y install build-essential libssl-dev
 
-curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh -o install_nvm.sh
+# curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh -o install_nvm.sh
 
-bash install_nvm.sh
+# bash install_nvm.sh
 
-source ~/.bashrc
-source ~/.nvm/nvm.sh
-echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
+# source ~/.bashrc
+# source ~/.nvm/nvm.sh
+# echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
 
-nvm install 7.10.0
+# nvm install 7.10.0
+
+cd ~
+curl -sL https://deb.nodesource.com/setup_7.x -o nodesource_setup.sh
+
+sudo bash nodesource_setup.sh
+
+sudo apt-get -y install nodejs
 
 node -v
+
+npm -v
 
 npm install -g gulp bower
 

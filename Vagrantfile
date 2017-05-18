@@ -42,7 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
   # install some base packages with Apache
-  config.vm.provision :shell, path: "bootstrap-apache.sh"
+  config.vm.provision :shell, privileged: false, path: "bootstrap-apache.sh"
 
   # install some base packages with Nginx
   # config.vm.provision :shell, privileged: false, path: "bootstrap-nginx.sh"
