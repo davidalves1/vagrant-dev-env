@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/trusty64"
 
   # config.ssh.username = 'ubuntu'
   # config.ssh.password = 'vagrant'
@@ -21,8 +21,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Share an additional folder to the guest VM.
   # config.vm.synced_folder "your/local/folder", "vm/respective/folder"
-  config.vm.synced_folder 'html/', '/var/www/html/', :mount_options => ["dmode=777","fmode=666"], nfs: true
-  config.vm.synced_folder 'home/', '/home/ubuntu/', nfs: true
+  config.vm.synced_folder 'html/', '/var/www/html/', nfs: true
+  config.vm.synced_folder 'home/', '/home/vagrant/', nfs: true
 
   # Provider-specific configuration
   config.vm.provider "virtualbox" do |vb|

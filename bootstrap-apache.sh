@@ -13,13 +13,18 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 # --------------------
 sudo apt-get update
 
+echo -e "##### Install base packages #####"
+sudo apt-get install -y vim curl build-essential python-software-properties git
+
 echo '##### Install Mysql #####'
 # --------------------
-sudo apt-get -y mysql-server mysql-client
+sudo apt-get install -y -f mysql-server-5.6 mysql-client-5.6
+sudo mysql_secure_installation
+sudo mysql_install_db
 
 echo '##### Install Apache #####'
 # --------------------
-sudo apt-get install -y apache2
+sudo apt-get install -y -f apache2
 sudo chmod -R 777 /var/www
 
 # Replace contents of default Apache vhost
@@ -45,39 +50,27 @@ EOF
 )
 
 echo "$VHOST" > /home/ubuntu/000-default.conf
-mv /home/ubuntu/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+sudo mv /home/ubuntu/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 
-a2enmod rewrite
+sudo a2enmod rewrite
 
 sudo service apache2 restart
 
 echo '##### Install PHP 7.0 or 5.6 #####'
 # --------------------
-sudo apt-get install -y php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip
-# sudo apt-get install -y php5.6 libapache2-mod-php5.6 php5.6-cli php5.6-common php5.6-mbstring php5.6-gd php5.6-intl php5.6-xml php5.6-mysql php5.6-mcrypt php5.6-zip
+sudo apt-get install -y -f php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip
+# sudo apt-get install -y -f php5.6 libapache2-mod-php5.6 php5.6-cli php5.6-common php5.6-mbstring php5.6-gd php5.6-intl php5.6-xml php5.6-mysql php5.6-mcrypt php5.6-zip
 
-echo '##### Install NVM and Node #####'
+echo '##### Install Node #####'
 # --------------------
-# sudo apt-get update
-# sudo apt-get -y install build-essential libssl-dev
-# sudo apt-get -y install build-essential libssl-dev
-
-# curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh -o install_nvm.sh
-
-# bash install_nvm.sh
-
-# source ~/.bashrc
-# source ~/.nvm/nvm.sh
-# echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
-
-# nvm install 7.10.0
 
 cd ~
 curl -sL https://deb.nodesource.com/setup_7.x -o nodesource_setup.sh
 
 sudo bash nodesource_setup.sh
 
-sudo apt-get install -y nodejs
+sudo apt-get update
+sudo apt-get install -y -f nodejs
 
 node -v
 
@@ -87,7 +80,7 @@ sudo npm install -g gulp bower
 
 echo '##### Install Yarn, Gulp and Bower #####'
 # --------------------
-sudo apt-get -y install yarn
+sudo apt-get install -y yarn
 
 # # Add MongoDB list file
 # # --------------------
@@ -96,6 +89,6 @@ sudo apt-get -y install yarn
 
 # echo '##### Install MongoDB 3.4 #####'
 # # --------------------
-# sudo apt-get update && sudo apt-get install -y mongodb-org
+# sudo apt-get update && sudo apt-get install -y -f mongodb-org
 
 sudo apt-get autoremove
