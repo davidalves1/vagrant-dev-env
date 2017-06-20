@@ -9,6 +9,10 @@ sudo add-apt-repository ppa:ondrej/php
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
+# Add Mysql 5.7 list file
+wget http://dev.mysql.com/get/mysql-apt-config_0.6.0-1_all.deb
+sudo dpkg -i mysql-apt-config_0.6.0-1_all.deb
+
 # Update apt-get
 # --------------------
 sudo apt-get update
@@ -16,9 +20,9 @@ sudo apt-get update
 echo -e "##### Install base packages #####"
 sudo apt-get install -y vim curl build-essential python-software-properties git
 
-echo '##### Install Mysql #####'
-# --------------------
-sudo apt-get install -y -f mysql-server-5.6 mysql-client-5.6
+# echo '##### Install Mysql #####'
+# # --------------------
+sudo apt-get install -y -f mysql-server
 sudo mysql_secure_installation
 sudo mysql_install_db
 
@@ -49,7 +53,7 @@ Listen 8080
 EOF
 )
 
-echo "$VHOST" > /home/ubuntu/000-default.conf
+echo "$VHOST" > sudo /home/ubuntu/000-default.conf
 sudo mv /home/ubuntu/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 
 sudo a2enmod rewrite
@@ -76,11 +80,12 @@ node -v
 
 npm -v
 
+echo '##### Install Yarn, Gulp and Bower #####'
+
 sudo npm install -g gulp bower
 
-echo '##### Install Yarn, Gulp and Bower #####'
-# --------------------
 sudo apt-get install -y yarn
+# --------------------
 
 # # Add MongoDB list file
 # # --------------------
@@ -92,3 +97,5 @@ sudo apt-get install -y yarn
 # sudo apt-get update && sudo apt-get install -y -f mongodb-org
 
 sudo apt-get autoremove
+
+sudo apt-get autoclean

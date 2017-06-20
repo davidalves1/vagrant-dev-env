@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 3306,  host: 33006 # mysql
 
   # Create a private network, which allows host-only access to the machine
-  # config.vm.network "private_network", ip: "192.168.30.100"
+  config.vm.network "private_network", ip: "192.168.30.100"
 
   # Share an additional folder to the guest VM.
   # config.vm.synced_folder "your/local/folder", "vm/respective/folder"
@@ -39,10 +39,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # vb.customize ["modifyvm", :id, "--natdnsproxy1",         "on"]
   end
 
-  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+  # config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
   # install some base packages with Apache
-  config.vm.provision :shell, privileged: false, path: "bootstrap-apache.sh"
+  # config.vm.provision :shell, privileged: false, path: "bootstrap-apache.sh"
 
   # install some base packages with Nginx
   # config.vm.provision :shell, privileged: false, path: "bootstrap-nginx.sh"
