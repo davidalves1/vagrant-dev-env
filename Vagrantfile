@@ -13,8 +13,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. 
-  config.vm.network "forwarded_port", guest: 80,    host: 80 # http
-  config.vm.network "forwarded_port", guest: 3306,  host: 3306 # mysql
+  config.vm.network "forwarded_port", guest: 80,    host: 8080 # http
+  config.vm.network "forwarded_port", guest: 3306,  host: 33006 # mysql
 
   # Create a private network, which allows host-only access to the machine
   config.vm.network "private_network", ip: "192.168.30.100"
@@ -30,10 +30,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.gui = false
 
     # set the vm name in virtualbox
-    vb.name = "freterapido-dev"
+    vb.name = "vagrant-dev"
 
     # Use VBoxManage to customize the VM. For example to change memory:
-    vb.customize ["modifyvm", :id, "--memory",               "512"]
+    vb.customize ["modifyvm", :id, "--memory",                "768"]
     # vb.customize ["modifyvm", :id, "--cpuexecutioncap",      "95"]
     # vb.customize ["modifyvm", :id, "--natdnshostresolver1",  "on"]
     # vb.customize ["modifyvm", :id, "--natdnsproxy1",         "on"]

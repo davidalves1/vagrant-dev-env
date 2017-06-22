@@ -14,7 +14,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt-get update
 
 echo -e "##### Install base packages #####"
-sudo apt-get install -y vim curl build-essential python-software-properties git
+sudo apt-get install -y vim curl build-essential python-software-properties git vim htop
 
 # # For now MySQL must be installed manually
 # # echo '##### Install Mysql #####'
@@ -26,7 +26,7 @@ sudo apt-get install -y vim curl build-essential python-software-properties git
 # 
 # sudo apt-get update
 # 
-# sudo apt-get install -y mysql-server
+# sudo apt-get install -y -f mysql-server
 
 echo '##### Install Apache #####'
 # --------------------
@@ -61,7 +61,7 @@ echo '##### Install Yarn, Gulp and Bower #####'
 
 sudo npm install -g gulp bower
 
-sudo apt-get install -y yarn
+sudo apt-get install -y -f yarn
 # --------------------
 
 # # Add MongoDB list file
